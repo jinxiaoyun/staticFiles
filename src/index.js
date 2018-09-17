@@ -4,6 +4,7 @@ class Test {
     get(){
         // let name = 'adf';
         console.log('333')
+         //
 
     }
 }
