@@ -1,12 +1,27 @@
+const yargs = require('yargs');
+const Server = require('./app');
 
-class Test {
-    constructor(){}
-    get(){
-        // let name = 'adf';
-        console.log('333')
-         //
+const argv = yargs
+    .usage('staticFiles [options]')
+    .option('p', {
+        alias: 'port',
+        describe: '端口号',
+        default: 9527
+    })
+    .option('h', {
+        alias: 'hostname',
+        describe: 'host',
+        default: '127.0.0.1'
+    })
+    .option('d', {
+        alias: 'root',
+        describe: 'root path',
+        default: process.cwd()
+    })
+    .version()
+    .alias('v', 'version')
+    .help()
+    .argv;
 
-    }
-}
-
-module.exports = Test;
+const server = new Server(argv);
+server.start();
